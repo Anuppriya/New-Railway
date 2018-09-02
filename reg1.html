@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Multi Page Form</title>
+      <script>
+         function addEntry(page2) 
+		 {
+         var table = document.getElementById(page2);
+         var rowCount = table.rows.length;
+         var row = table.insertRow(rowCount);
+         
+         
+         
+         var cell2 = row.insertCell(0);
+         var element2 = document.createElement("input");
+         element2.type = "number";
+         element2.id = "sno";
+         cell2.appendChild(element2);
+                
+         var cell3 = row.insertCell(1);
+         var element3 = document.createElement("input");
+         element3.type = "text";
+         element3.id = "pname";
+		cell3.appendChild(element3);
+		
+					
+					
+         var cell4 = row.insertCell(2);
+         var element4 = document.createElement("input");
+         element4.type = "number";
+         element4.id = "age";
+         cell4.appendChild(element4);
+		 
+		 
+		 
+                
+         var cell5 = row.insertCell(3);
+         var element5 =document.getElementById("gender").value;
+         element5.id="gender";
+		 cell5.appendChild(element5);
+		 
+		 
+		 
+                
+         var cell6 = row.insertCell(4);
+         var element6 = document.getElementById("bp").value;
+		 element6.id = "bp";
+         cell6.appendChild(element6);
+                
+         var cell7 = row.insertCell(5);
+         var element7 = document.createElement("input");
+         element7.type = "checkbox";
+         element7.id = "c10";
+         cell7.appendChild(element7);
+         } 
+         
+         function prev1()
+         {
+         document.getElementById("win1").style.display="block";
+         document.getElementById("win2").style.display="none";
+         }
+         function prev2()
+         {
+         document.getElementById("win3").style.display="none";
+         document.getElementById("win2").style.display="block";
+         }
+         
+         function showValues(form) {
+         	var values = '<h2>Your Details</h2>';
+		document.getElementById("win3").style.display = "block";
+               	var len = form.length - 1; 
+               	for(i=0; i<len; i++) {
+                  	if (form[i].id.length > 2 && form[i].value!=""){
+                       	values += form[i].id;
+                       	values += ' : ';
+                       	values += form[i].value;
+                       	values += '<br>';
+                     	}
+                 }
+                 values += '<br/><br/><input type="button" class="next action-button" value="Previous" onclick="prev2()"><input type="button" class="next action-button" value="Submit"></center>';
+                 document.getElementById("win2").style.display = "none";
+                 document.getElementById("win3").innerHTML = values;
+          }
+		  
+		    
+		  
+          function validate(){
+				
+                var checkBox = document.getElementById("c1");
+				var fromm = document.getElementById("from").value;
+				var to = document.getElementById("to").value;
+				var jdate = document.getElementById("jdate").value;
+                  
+                
+				 if(fromm=="" || !fromm.match(/^[a-zA-Z]+$/))
+                    window.alert("Enter your Boarding point");	
+				else if(to=="" || !to.match(/^[a-zA-Z]+$/))
+                    window.alert("enter your destination");	
+				else if(jdate=="")
+                     window.alert("enter your journey date correctly");	
+                else if (checkBox.checked != true)
+         		  alert("Tick the checkbox to agree the terms & conditions");
+                else{
+                  document.getElementById("win1").style.display="none";
+                  document.getElementById("win2").style.display="block";
+                }
+         }
+		 
+		 
+		
+   </script>
+      <style>
+        #MultiForm input{
+        	padding:10px 5px;
+            border-radius: 1px;
+        }
+        .action-button {
+         width: 100px;
+         background:#008CBA;
+		 font-weight: bold;
+		
+         color: white;
+         border: none;
+         border-radius:12px;
+         padding: 10px 5px;
+         margin: 10px 5px;
+        
+		          }
+      </style>
+   </head>
+   <body>
+      <form id="MultiForm">
+         <div id="win1" class="page" style="visibility:visible;">
+            <h1>
+               <center>
+               <font face="Biondi" size="14" color="gold">Book a Seat</font>
+               <center>
+            </h1>
+			
+
+			
+			<h3>
+               <center>
+               <font face="Biondi" size="10" color="gold">Journey Details</font>
+               <center>
+            </h3>
+               
+            
+               
+             <table id="page1" class="page" align="center" width=45% >
+			   
+			<tr>
+                  <td><font face="imprint mt shadow">From</font><span style="color:red">*</span></td>
+                  <td><input type="text" id="from" required></td>
+            </tr>   
+			
+			<tr>
+                  <td><font face="imprint mt shadow">To</font><span style="color:red">*</span></td>
+                  <td><input type="text" id="to" required></td>
+            </tr>  
+			
+			<tr>
+                  <td><font face="imprint mt shadow">Journey Date</font><span style="color:red">*</span></td>
+                  <td><input type="date" id="jdate" mix="2018-08-30" required></td>
+            </tr>
+			
+			<tr>
+                  <td><font face="imprint mt shadow">Class</font><span style="color:red">*</span></td>
+				<td>
+				<select name="cls">
+				  <option>AC First Class</option>
+				  <option>AC 2-Tier</option>
+				  <option>AC 3-Tier</option>
+				  <option>First Class</option>
+				  <option>AC Chair car</option>
+				  <option>Sleeper</option>
+				  <option>Second Sitting</option>
+				  </select>
+                  </td>
+            </tr>     
+			
+			<tr>
+                  <td><font face="imprint mt shadow">Select Quota</font><span style="color:red">*</span></td>
+				<td>
+				<select name="choice" size="3">
+				  <option>Tatkal</option>
+				  <option>Ladies</option>
+				  <option>General</option>
+				  </select>
+                  </td>
+            </tr>     
+			
+			
+			
+			   			   
+			   
+            </table>
+            <center>
+               <p> <input type="checkbox" id="c1" required ><label for="acpt" required><font face="imprint mt shadow"> I accept the Terms and Conditions.</font></p>
+               <p> <input type="reset"  id="b1" class="next action-button" value="Reset" >
+                  <input type="button"  id="b2" class="next action-button" value="Next" onClick="validate()">
+               </p>
+            </center>
+         </div>
+
+		 
+         <div id="win2" class="page" style="display:none;">
+            <h1>
+               <center>
+			   <font face="Biondi" size="14" color="gold">
+               Journey Details</font>
+               <center>
+            </h1>
+            <table  align='center' id="page2" border=1 >
+               <tr>
+                  
+                  <th><font face="imprint mt shadow">S.No</font></th>
+                  <th><font face="imprint mt shadow">Passenger Name</font></th>
+                  <th><font face="imprint mt shadow">Age</font></th>
+                  <th><font face="imprint mt shadow">Gender</font></th>
+                  <th><font face="imprint mt shadow">Berth Preference</font></th>
+                  <th><font face="imprint mt shadow">Senior Citizen</font></th>
+               </tr>
+               <tr>
+                  
+                  <td><input type="text" id="sno"></td>
+                  <td><input type="text" id="pname"></td>
+                  <td><input type="number" id="age"></td>
+				  
+                  <td>
+				<select id="gender">
+				  <option>Male</option>
+				  <option>Female</option>
+				  <option>Other</option>
+				  </select>
+				  </td>
+				  
+                  <td>
+				  <select id="bp">
+				  <option>Lower Berth (LB)</option>
+				  <option>Upper Berth (UB</option>
+				  <option>Side Lower </option>
+				  <option>Side Upper</option>
+				  <option>Cabin Preference</option>
+				  <option>Window Seat</option>
+				  </select>
+				  </td>
+				  
+                  <td><input type="checkbox" id="c10"></td>
+               </tr>
+            </table>
+			
+			
+			
+            <center>
+               <input type="button" id="c3" value="Add Entry" onclick="addEntry('page2')">
+			   <br>
+			   <font face="imprint mt shadow">Payment via</font><span style="color:red">*</span>
+			   <input type="radio" name="pay">Credit card
+			   <input type="radio" name="pay">Debit card
+			   <input type="radio" name="pay">Wallet
+			   
+               
+               <input type="button"  id="b3" class="next action-button" value="Previous"onclick="prev1()">
+               <input type="reset"  id="b4" class="next action-button" value="Reset" >
+               <input type="button"  id="b5" class="next action-button" value="Next" onclick="showValues(form)">
+            </center>
+         </div>
+         <div id="win3"/> 
+      </form>
+   </body>
+</html>
